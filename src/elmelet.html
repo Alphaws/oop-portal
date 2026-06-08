@@ -21,6 +21,44 @@
         .answer {
             color: var(--text-color);
         }
+
+        /* Nyomtatási stílusok */
+        @media print {
+            header, nav, footer, .btn, .no-print {
+                display: none !important;
+            }
+            body {
+                background-color: white !important;
+                color: black !important;
+                padding: 0;
+                margin: 0;
+                font-size: 9pt; /* Kisebb betűméret nyomtatáshoz */
+            }
+            main {
+                max-width: 100% !important;
+                margin: 0 !important;
+            }
+            .card, .question-block {
+                background-color: transparent !important;
+                border: none !important;
+                border-bottom: 1px solid #ddd !important;
+                padding: 5px 0 !important;
+                margin-bottom: 5px !important;
+                page-break-inside: avoid;
+            }
+            h1, h2, h3 {
+                color: black !important;
+                margin-top: 10px !important;
+                margin-bottom: 5px !important;
+            }
+            .question {
+                color: black !important;
+                font-weight: bold;
+            }
+            .answer {
+                color: #333 !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -35,7 +73,10 @@
     </header>
 
     <main>
-        <h1>Elméleti Beugró Kérdések és Válaszok</h1>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h1>Elméleti Beugró Kérdések és Válaszok</h1>
+            <button onclick="window.print()" class="btn no-print" style="background-color: #3498db;">🖨️ Nyomtatás / PDF</button>
+        </div>
         <p>Programozás 1 - Milton Friedman Egyetem (Csolti Péter)</p>
 
         <h2>I. Ismétlés: metódusok</h2>
