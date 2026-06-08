@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3. Alkalom: Komplexitás - OOP Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo"><strong>OOP</strong> Portal</div>
+        <nav>
+            <a href="index.html">Főoldal</a>
+            <a href="elmelet.html">Elmélet</a>
+            <a href="vizsga.html">Vizsga</a>
+            <a href="orai-munkak.html">Órai munkák</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>3. Alkalom: Komplex Adatmodellezés</h1>
+        
+        <section class="card">
+            <h2>Elméleti összefoglaló</h2>
+            <p>A harmadik alkalommal az objektumok közötti kapcsolatokra és a speciális metódusok felülírására koncentráltunk.</p>
+            <ul>
+                <li><strong>Konstruktor láncolás:</strong> A <code>this(...)</code> kulcsszóval egy konstruktorból meghívhatunk egy másikat, csökkentve a kódismétlést.</li>
+                <li><strong>Metódus felülírás (Override):</strong> Az ősosztálytól örökölt metódusok (pl. <code>ToString</code>, <code>Equals</code>) testreszabása.</li>
+                <li><strong>Összetett típusok:</strong> Egy osztály mezője lehet egy másik osztály példánya is (kompozíció).</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>Példakód: Hajó osztály láncolt konstruktorral</h2>
+            <pre><code>
+namespace HajoProgram
+{
+    internal class Hajo
+    {
+        public string Tulaj { get; set; }
+        public int Hely { get; set; }
+        public string Tipus { get; set; }
+
+        // Alapértelmezett konstruktor: láncolt hívás a paraméteresre
+        public Hajo() : this("*nincs", -1, "*nem ismert")
+        {
+        }
+
+        public Hajo(string tulaj, int hely, string tipus)
+        {
+            Tulaj = tulaj;
+            Hely = hely;
+            Tipus = tipus;
+        }
+
+        public override string ToString()
+        {
+            return $"Hajo{{tulaj:{Tulaj}, hely:{Hely}, tipus:{Tipus}}}";
+        }
+    }
+}
+            </code></pre>
+        </section>
+
+        <section class="card">
+            <h2>Gyakorlat: Vonal Program</h2>
+            <p>Megtanultuk, hogyan számoljuk ki két pont távolságát, ahol a <code>Vonal</code> objektum két <code>Pont</code> objektumot tartalmazott.</p>
+        </section>
+
+        <a href="orai-munkak.html" class="btn">Vissza az órákhoz</a>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Milton Friedman Egyetem - Programozás 1</p>
+    </footer>
+</body>
+</html>

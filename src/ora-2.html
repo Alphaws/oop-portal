@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2. Alkalom: Osztályok - OOP Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo"><strong>OOP</strong> Portal</div>
+        <nav>
+            <a href="index.html">Főoldal</a>
+            <a href="elmelet.html">Elmélet</a>
+            <a href="vizsga.html">Vizsga</a>
+            <a href="orai-munkak.html">Órai munkák</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>2. Alkalom: Osztályok és Egységbezárás</h1>
+        
+        <section class="card">
+            <h2>Elméleti összefoglaló</h2>
+            <p>A második alkalommal elkezdtük az objektumorientált paradigmát, ahol a valódi világ entitásait osztályokba csomagoltuk.</p>
+            <ul>
+                <li><strong>Egységbezárás (Encapsulation):</strong> Az adatok elrejtése (private) és kontrollált elérése (public property).</li>
+                <li><strong>Property-k:</strong> Get és Set metódusok, amelyek lehetővé teszik a validációt az adatbeállítás során.</li>
+                <li><strong>Konstruktor:</strong> Speciális metódus az objektum inicializálására.</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>Példakód: Ember osztály validációval</h2>
+            <pre><code>
+namespace EmberProgram
+{
+    internal class Ember
+    {
+        private int kor;
+        private string nev;
+
+        public Ember(string nev, int kor) {
+            this.Kor = kor;
+            this.Nev = nev;
+        }
+
+        public int Kor {
+            get { return kor; }
+            set {
+                // Csak pozitív kor fogadható el
+                kor = value > 0 ? value : 1;
+            }
+        }
+
+        public string Nev {
+            get { return nev; }
+            set {
+                // Minimum 3 karakteres név
+                nev = value.Length >= 3 ? value : "-";
+            }
+        }
+    }
+}
+            </code></pre>
+        </section>
+
+        <section class="card">
+            <h2>Gyakorlati feladatok</h2>
+            <p>Ezen az órán készült el a <strong>Dobókocka szimuláció</strong> is, ahol az osztálymezőkben tároltuk a véletlenszám-generátort, biztosítva, hogy minden példány saját állapottal rendelkezzen.</p>
+        </section>
+
+        <a href="orai-munkak.html" class="btn">Vissza az órákhoz</a>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Milton Friedman Egyetem - Programozás 1</p>
+    </footer>
+</body>
+</html>

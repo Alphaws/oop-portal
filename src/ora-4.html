@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Alkalom: Gyűjtemények - OOP Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo"><strong>OOP</strong> Portal</div>
+        <nav>
+            <a href="index.html">Főoldal</a>
+            <a href="elmelet.html">Elmélet</a>
+            <a href="vizsga.html">Vizsga</a>
+            <a href="orai-munkak.html">Órai munkák</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>4. Alkalom: Generikus Gyűjtemények és LINQ</h1>
+        
+        <section class="card">
+            <h2>Elméleti összefoglaló</h2>
+            <p>A negyedik alkalommal a több adat hatékony tárolásával és lekérdezésével foglalkoztunk.</p>
+            <ul>
+                <li><strong>List&lt;T&gt;:</strong> Dinamikusan méretezhető tömb, amely sorrendben tárolja az elemeket.</li>
+                <li><strong>HashSet&lt;T&gt;:</strong> Olyan gyűjtemény, amely csak egyedi elemeket tartalmazhat (halmaz).</li>
+                <li><strong>Dictionary&lt;K, V&gt;:</strong> Kulcs-érték párok tárolása, ideális statisztikákhoz.</li>
+                <li><strong>LINQ:</strong> Deklaratív lekérdező nyelv gyűjteményekhez (szűrés, rendezés, összegzés).</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>Példakód: LINQ és Dictionary használata</h2>
+            <pre><code>
+using System.Linq;
+
+// Összegzés LINQ-val
+int osszpont = versenyzok.Sum(v => v.Pontszam);
+
+// Legjobb elem megkeresése
+var legjobb = csapatok.OrderByDescending(cs => cs.PontszamOsszesen()).First();
+
+// Statisztika Dictionary-vel
+var stat = new Dictionary&lt;string, int&gt;();
+foreach (var v in versenyzok) {
+    string o = v.Orszag.ToLower();
+    if (stat.ContainsKey(o)) stat[o]++;
+    else stat[o] = 1;
+}
+            </code></pre>
+        </section>
+
+        <section class="card">
+            <h2>Gyakorlat: Lottó Program</h2>
+            <p>Megvalósítottunk egy érvényes lottószelvény generátort, amely <code>HashSet</code> segítségével biztosította, hogy ne legyen számismétlődés a kihúzott számok között.</p>
+        </section>
+
+        <a href="orai-munkak.html" class="btn">Vissza az órákhoz</a>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Milton Friedman Egyetem - Programozás 1</p>
+    </footer>
+</body>
+</html>

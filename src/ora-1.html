@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1. Alkalom: Metódusok - OOP Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo"><strong>OOP</strong> Portal</div>
+        <nav>
+            <a href="index.html">Főoldal</a>
+            <a href="elmelet.html">Elmélet</a>
+            <a href="vizsga.html">Vizsga</a>
+            <a href="orai-munkak.html">Órai munkák</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>1. Alkalom: Metódusok és Alapok</h1>
+        
+        <section class="card">
+            <h2>Elméleti összefoglaló</h2>
+            <p>Az első alkalommal a procedurális programozás alapjait mélyítettük el, fókuszálva a metódusok tiszta és hatékony használatára.</p>
+            <ul>
+                <li><strong>Szignatúra:</strong> A metódus neve és paraméterlistája együttesen határozza meg a szignatúrát.</li>
+                <li><strong>Túlterhelés (Overloading):</strong> Lehetőség van több, azonos nevű metódus létrehozására, ha a paraméterlistájuk (típus, szám, sorrend) eltér.</li>
+                <li><strong>Statikus kulcsszó:</strong> A <code>static</code> metódusok az osztályhoz tartoznak, nem példányhoz, így közvetlenül hívhatók.</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>Példakód: Metódus Túlterhelés</h2>
+            <p>Az alábbi kód bemutatja, hogyan láncolhatjuk össze a túlterhelt metódusokat a kódduplikáció elkerülése érdekében.</p>
+            <pre><code>
+namespace Tulterheles
+{
+    internal class Program
+    {
+        static int[] pontok;
+
+        static void Main(string[] args)
+        {
+            feltoltField(); // Alapértelmezett hívás
+            feltoltField(5); // Paraméteres hívás
+        }
+
+        // Túlterhelés 1: Alapértelmezett értékkel hívja a másikat
+        static void feltoltField()
+        {
+            feltoltField(3); // Kódduplikálás elkerülése!
+        }
+
+        // Túlterhelés 2: A tényleges logika
+        private static void feltoltField(int db)
+        {
+            pontok = new int[db];
+            for (int i = 0; i < pontok.Length; i++)
+            {
+                pontok[i] = i + 2;
+            }
+        }
+    }
+}
+            </code></pre>
+        </section>
+
+        <section class="card">
+            <h2>Hasznos tippek</h2>
+            <p><strong>CTRL + SHIFT + SPACE:</strong> Megmutatja az aktuális metódus paraméter-lehetőségeit (túlterheléseit) kódírás közben.</p>
+        </section>
+
+        <a href="orai-munkak.html" class="btn">Vissza az órákhoz</a>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Milton Friedman Egyetem - Programozás 1</p>
+    </footer>
+</body>
+</html>
