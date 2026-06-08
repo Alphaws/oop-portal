@@ -32,7 +32,7 @@
                 color: black !important;
                 padding: 0;
                 margin: 0;
-                font-size: 9pt; /* Kisebb betűméret nyomtatáshoz */
+                font-size: 9pt;
             }
             main {
                 max-width: 100% !important;
@@ -120,6 +120,22 @@
                 </ul>
             </div>
         </div>
+        <div class="question-block">
+            <div class="question">9) A main() -ből mit tudunk hívni?</div>
+            <div class="answer">Mivel a <code>main</code> statikus, közvetlenül csak más statikus metódusokat hívhat meg. Példány-metódusokat csak az adott osztály példányosítása után, az objektum-referencián keresztül érhetünk el.</div>
+        </div>
+        <div class="question-block">
+            <div class="question">10) Mire jó az enum felsoroló típus? Van köze a metódusokhoz?</div>
+            <div class="answer">Fix, véges értékkészlet definiálására szolgál. Lehetnek saját metódusai (pl. Java-ban), és gyakran használják metódusok paramétereként a típusbiztonság növelése érdekében.</div>
+        </div>
+        <div class="question-block">
+            <div class="question">11) Mit tudunk egy metódus mellékhatásáról?</div>
+            <div class="answer">Mellékhatásnak nevezzük, ha a metódus a visszatérési értéken kívül módosítja a program állapotát (pl. osztálymező módosítása, konzolra írás, fájlmentés).</div>
+        </div>
+        <div class="question-block">
+            <div class="question">12) Mi jellemző egy metódusra (Clean Code elvek), eljárás vagy függvény legyen ami számol?</div>
+            <div class="answer">A Clean Code szerint egy metódus egy dolgot csináljon. Ami számol, az legyen függvény (adja vissza az eredményt), és ne legyen mellékhatása (pl. ne írjon ki semmit közben).</div>
+        </div>
 
         <h2>II. OOP paradigma</h2>
         <div class="question-block">
@@ -135,8 +151,40 @@
             <div class="answer">Az utódosztály (subclass) megörökli az ősosztály (superclass) látható tulajdonságait és viselkedését, lehetővé téve a kód újrafelhasználását és a hierarchikus felépítést.</div>
         </div>
         <div class="question-block">
-            <div class="question">10) Melyek a GIT technológia szolgáltatásai?</div>
+            <div class="question">4) Melyik nem objektumorientált lehetőség (static, túlterhelés, felülírás)?</div>
+            <div class="answer">Mindhárom használatos, de a <code>static</code> a legkevésbé "objektumorientált", mivel az osztályszintű működést támogatja a példányosítás helyett. Ha választani kell az OOP alapkövei közül, a static nem tartozik az alapelvek közé.</div>
+        </div>
+        <div class="question-block">
+            <div class="question">5) Melyik kulcsszó utal az egységbezárásra?</div>
+            <div class="answer">A láthatósági módosítók: <code>private</code>, <code>protected</code>, <code>public</code>.</div>
+        </div>
+        <div class="question-block">
+            <div class="question">6) Ha az osztályok léteznek és van köztük öröklés, akkor melyik helyes (polimorfizmus ős és utód kapcsolatban)?</div>
+            <div class="answer">Egy ős típusú referencia mutathat egy utód típusú objektumra.</div>
+        </div>
+        <div class="question-block">
+            <div class="question">7) Melyik a pontos megfelelője x-nek: Object x; (referencia, objektum, példány, osztály)?</div>
+            <div class="answer"><b>Referencia</b>. Ez egy változó, ami képes egy objektum címét tárolni, de maga az objektum még nem jött létre.</div>
+        </div>
+        <div class="question-block">
+            <div class="question">8) Mi nem jellemző a konstruktorra?</div>
+            <div class="answer">Nem jellemző rá, hogy lenne visszatérési típusa, vagy hogy manuálisan hívható lenne egy már létező objektumon.</div>
+        </div>
+        <div class="question-block">
+            <div class="question">9) Elképzelhető, hogy egy osztálynak nincs konstruktora?</div>
+            <div class="answer">Nem. Ha a programozó nem ír egyet sem, a fordító automatikusan generál egy alapértelmezett, paraméter nélküli konstruktort.</div>
+        </div>
+        <div class="question-block">
+            <div class="question">10) Melyek az GIT technológia szolgáltatásai?</div>
             <div class="answer">Verziókezelés, változások követése, elágazások kezelése (branching), összefésülés (merging), távoli tárolás és közös munka támogatása.</div>
+        </div>
+        <div class="question-block">
+            <div class="question">11) Mi az utasítás balról jobbra olvasott értelmezése: Random r = new Random()</div>
+            <div class="answer"><code>Random</code> (típus deklaráció) -> <code>r</code> (referencia változó neve) -> <code>=</code> (értékadás/hozzárendelés) -> <code>new</code> (objektum létrehozása a heap-en) -> <code>Random()</code> (konstruktor hívása az inicializáláshoz).</div>
+        </div>
+        <div class="question-block">
+            <div class="question">12) Mi a kapcsolat a Git és az IDE között?</div>
+            <div class="answer">Az IDE (fejlesztőkörnyezet) integrált felületet biztosít a Git parancsok használatához (pl. gombok commit-hoz, push-hoz), így nem kell mindenhez terminált használni.</div>
         </div>
 
         <h2>III. OOP konstruktor</h2>
@@ -145,12 +193,43 @@
             <div class="answer">Az objektum példányosításakor a kezdőállapot beállítása (mezők inicializálása) és az esetleges erőforrások lefoglalása.</div>
         </div>
         <div class="question-block">
+            <div class="question">2. Milyen lehetőségeink vannak egy adatot (field) beállítani?</div>
+            <div class="answer">Közvetlenül a deklaráció helyén, a konstruktorban, vagy később setter metódusokon (C#-ban property-ken) keresztül.</div>
+        </div>
+        <div class="question-block">
+            <div class="question">3. Melyek az OOP modell osztály elkészítésének elvei?</div>
+            <div class="answer">Az adatok elrejtése (private field-ek), hozzáférés biztosítása kontrollált módon (getter/setter), és az adatok validálása a beállításkor.</div>
+        </div>
+        <div class="question-block">
+            <div class="question">4. Hogyan hat az objektumra a konstruktor?</div>
+            <div class="answer">Pontosan egyszer fut le az objektum élete során, a létrehozás pillanatában. Biztosítja, hogy az objektum konzisztens állapotban jöjjön létre.</div>
+        </div>
+        <div class="question-block">
+            <div class="question">5. Objektum állapotának beállítása hogyan lehetséges általunk írt setter nélkül?</div>
+            <div class="answer">Konstruktoron keresztül a létrehozáskor, vagy publikus mezők esetén közvetlen módosítással (utóbbi nem ajánlott).</div>
+        </div>
+        <div class="question-block">
+            <div class="question">6. Mit nem célszerű elhelyezni modell osztályban?</div>
+            <div class="answer">Bonyolult üzleti logikát, felhasználói felületet kezelő kódot (UI), vagy közvetlen adatbázis-elérést. A modell az adatok reprezentációjára szolgál.</div>
+        </div>
+        <div class="question-block">
             <div class="question">7. Mi a dolga egy setternek?</div>
             <div class="answer">Értéket ad egy privát mezőnek, és lehetőséget biztosít az adat ellenőrzésére (validálására) a beállítás előtt.</div>
         </div>
         <div class="question-block">
+            <div class="question">8. Adj meg gettert az int kor adattagra!</div>
+            <div class="answer">
+                Java: <code>public int getKor() { return kor; }</code><br>
+                C#: <code>public int Kor { get => kor; }</code>
+            </div>
+        </div>
+        <div class="question-block">
+            <div class="question">9. Változók inicializálása milyen sorrendben fut le?</div>
+            <div class="answer">1. Statikus tagok, 2. Példányszintű alapértékek (deklaráció helyén), 3. Konstruktor törzse.</div>
+        </div>
+        <div class="question-block">
             <div class="question">10. Mi a helyes módszer az adatok ellenőrzésére, a kódduplikálás elkerülésével?</div>
-            <div class="answer">A validációs logikát a setterekbe kell tenni, és a konstruktorból is ezeket a settereket kell meghívni közvetlen mező-értékadás helyett.</div>
+            <div class="answer">A validációs logikát a setterekbe kell tenni, és a konstruktorból भी ezeket a settereket kell meghívni közvetlen mező-értékadás helyett.</div>
         </div>
 
         <h2>IV. OOP konstruktorhívási lánc, override</h2>
@@ -159,12 +238,51 @@
             <div class="answer">Konstruktor láncolás (Constructor Chaining).</div>
         </div>
         <div class="question-block">
+            <div class="question">2. Miért fontos a konstruktorhívási lánc?</div>
+            <div class="answer">Segít elkerülni a kódismétlést: a közös inicializáló logika egyetlen konstruktorban összpontosul, a többi csak továbbpasszolja az adatokat.</div>
+        </div>
+        <div class="question-block">
+            <div class="question">3. Hány konstruktora van / lehet egy saját osztálynak?</div>
+            <div class="answer">Bármennyi lehet, amennyiben a paraméterlistájuk (szignatúrájuk) különbözik (Constructor Overloading).</div>
+        </div>
+        <div class="question-block">
+            <div class="question">4. A default-tal együtt hány konstruktort írhatunk, ha minden esetet le akarunk fedni, az int a, b; adattagokra?</div>
+            <div class="answer">4 esetet: (), (int a), (int b), (int a, int b).</div>
+        </div>
+        <div class="question-block">
+            <div class="question">5. A default konstruktorból hogy hívjuk meg a Hajo(int a) konstruktort, ha 1 az alapérték?</div>
+            <div class="answer">
+                Java: <code>this(1);</code><br>
+                C#: <code>public Hajo() : this(1) { }</code>
+            </div>
+        </div>
+        <div class="question-block">
+            <div class="question">6. Ha hibás egy érték annak beállításakor, mi az elvárt működés?</div>
+            <div class="answer">A programnak hibát (kivételt/Exception) kell dobnia, jelezve, hogy az objektum érvénytelen állapotba kerülne.</div>
+        </div>
+        <div class="question-block">
+            <div class="question">7. A class Hajo { kezdetű saját osztály örököl e bármit?</div>
+            <div class="answer">Igen, alapértelmezésben minden osztály az <code>Object</code> osztályból származik le, így örökli annak metódusait (pl. <code>toString</code>, <code>equals</code>).</div>
+        </div>
+        <div class="question-block">
+            <div class="question">8. Hogyan írható felül egy örökölt metódus?</div>
+            <div class="answer">Az utódosztályban azonos szignatúrával deklaráljuk a metódust. Java-ban az <code>@Override</code> annotációval, C#-ban az <code>override</code> kulcsszóval jelöljük (ha az ősmetódus <code>virtual</code> vagy <code>abstract</code>).</div>
+        </div>
+        <div class="question-block">
             <div class="question">9. Mi a toString szerepe?</div>
             <div class="answer">Az objektum aktuális állapotát (mezőit) reprezentáló szöveges formátum előállítása, ami leginkább debugolásnál hasznos.</div>
         </div>
         <div class="question-block">
             <div class="question">10. Mi a kapcsolat az equals() és a hashCode() között?</div>
             <div class="answer">A szerződés szerint: ha két objektum egyenlő (equals), akkor a hash kódjuknak is azonosnak kell lennie. Megfordítva nem feltétlenül igaz (hash ütközés).</div>
+        </div>
+        <div class="question-block">
+            <div class="question">11. Rendezd sorba a helyes működés lépéseit egy hash alapú kollekcióban!</div>
+            <div class="answer">
+                1. <code>hashCode()</code> hívása az objektum indexének meghatározásához.<br>
+                2. A megfelelő tárolóhely (bucket) megkeresése.<br>
+                3. Ha a helyen már vannak elemek, az <code>equals()</code> hívása a pontos egyezés megtalálásához.
+            </div>
         </div>
     </main>
 
