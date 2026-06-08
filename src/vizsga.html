@@ -28,6 +28,12 @@
             margin-bottom: 30px;
             overflow-x: auto;
             color: #d4d4d4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        pre {
+            margin: 0;
+            white-space: pre;
         }
         .comment { color: #6a9955; }
         .keyword { color: #569cd6; }
@@ -50,16 +56,16 @@
 
     <main>
         <h1>Formula–1 bajnokság - HIVATALOS VIZSGA MEGOLDÁS</h1>
-        <p style="background-color: #d35400; color: white; padding: 10px; border-radius: 5px;">
-            <strong>⚠️ VIZSGA KÖVETELMÉNYEK FRISSÍTVE:</strong><br>
-            - <b>NEM KELL:</b> WinForms, Bajnokság ToString.<br>
+        
+        <p style="background-color: #d35400; color: white; padding: 15px; border-radius: 5px; margin-bottom: 30px;">
+            <strong>⚠️ VIZSGA KÖVETELMÉNYEK (FRISSÍTVE):</strong><br>
+            - <b>NEM KELL:</b> WinForms felület és Bajnokság ToString.<br>
             - <b>MÓDOSÍTVA:</b> == operátor helyett <b>Equals + GetHashCode</b>.<br>
-            - <b>MÓDOSÍTVA:</b> TypeError helyett <b>Saját kivétel (F1Exception)</b>.
+            - <b>MÓDOSÍTVA:</b> TypeError helyett <b>Saját kivétel (F1Exception)</b> mindenhol.
         </p>
 
         <h2>1. F1Exception osztály</h2>
-        <div class="code-block">
-<span class="comment">/* 
+        <div class="code-block"><pre><span class="comment">/* 
  * A F1Exception osztály: 
  * - Hozz létre egy F1Exception nevű kivételosztályt, amely az Exception-ből öröklődik!
  * - Készíts egy egyparaméteres konstruktort, amely egy hibaüzenetet vár!
@@ -68,12 +74,14 @@
 <span class="keyword">public class</span> <span class="type">F1Exception</span> : <span class="type">Exception</span>
 {
     <span class="keyword">public</span> <span class="method">F1Exception</span>() { }
-    <span class="keyword">public</span> <span class="method">F1Exception</span>(<span class="keyword">string</span> message) : <span class="keyword">base</span>(message) { }
-}</div>
+    
+    <span class="keyword">public</span> <span class="method">F1Exception</span>(<span class="keyword">string</span> message) : <span class="keyword">base</span>(message) 
+    { 
+    }
+}</pre></div>
 
         <h2>2. Versenyzo osztály</h2>
-        <div class="code-block">
-<span class="comment">/*
+        <div class="code-block"><pre><span class="comment">/*
  * A Versenyzo osztály:
  * 1. nev, orszag és pontszam adattagok.
  * 2. Konstruktor (nev, orszag, pontszam sorrendben).
@@ -90,13 +98,14 @@
 
     <span class="keyword">public</span> <span class="method">Versenyzo</span>(<span class="keyword">string</span> nev, <span class="keyword">string</span> orszag, <span class="keyword">int</span> pontszam = <span class="number">0</span>)
     {
-        <span class="keyword">this</span>.nev = nev;
-        <span class="keyword">this</span>.orszag = orszag;
+        <span class="keyword">this</span>.Nev = nev;
+        <span class="keyword">this</span>.Orszag = orszag;
         <span class="keyword">this</span>.Pontszam = pontszam;
     }
 
     <span class="keyword">public string</span> Nev { <span class="keyword">get</span> => nev; <span class="keyword">set</span> => nev = <span class="keyword">value</span>; }
     <span class="keyword">public string</span> Orszag { <span class="keyword">get</span> => orszag; <span class="keyword">set</span> => orszag = <span class="keyword">value</span>; }
+
     <span class="keyword">public int</span> Pontszam
     {
         <span class="keyword">get</span> => pontszam;
@@ -108,7 +117,10 @@
         }
     }
 
-    <span class="keyword">public override string</span> <span class="method">ToString</span>() => <span class="string">$"</span>{nev}<span class="string"> (</span>{orszag}<span class="string">) - </span>{pontszam}<span class="string"> pont"</span>;
+    <span class="keyword">public override string</span> <span class="method">ToString</span>() 
+    {
+        <span class="keyword">return</span> <span class="string">$"</span>{nev}<span class="string"> (</span>{orszag}<span class="string">) - </span>{pontszam}<span class="string"> pont"</span>;
+    }
 
     <span class="keyword">public override bool</span> <span class="method">Equals</span>(<span class="keyword">object</span> obj)
     {
@@ -120,8 +132,101 @@
         <span class="keyword">return false</span>;
     }
 
-    <span class="keyword">public override int</span> <span class="method">GetHashCode</span>() => (nev.ToLower(), orszag.ToLower()).GetHashCode();
-}</div>
+    <span class="keyword">public override int</span> <span class="method">GetHashCode</span>() 
+    {
+        <span class="keyword">return</span> HashCode.Combine(nev.ToLower(), orszag.ToLower());
+    }
+}</pre></div>
+
+        <h2>3. Csapat osztály</h2>
+        <div class="code-block"><pre><span class="comment">/*
+ * A Csapat osztály:
+ * 1. neve és versenyzok lista.
+ * 2. Konstruktor (nev paraméter, lista inicializálása).
+ * 3. hozzaad metódus (Versenyzo objektumot ad a listához).
+ *    (MÓDOSÍTVA): TypeError helyett saját F1Exception: „Nem versenyző!”.
+ * 4. pontszam_osszesen metódus (csapat összpontszáma).
+ */</span>
+<span class="keyword">public class</span> <span class="type">Csapat</span>
+{
+    <span class="keyword">public string</span> Nev { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">private</span> <span class="type">List</span>&lt;<span class="type">Versenyzo</span>&gt; versenyzok;
+
+    <span class="keyword">public</span> <span class="type">IReadOnlyList</span>&lt;<span class="type">Versenyzo</span>&gt; Versenyzok => versenyzok.AsReadOnly();
+
+    <span class="keyword">public</span> <span class="method">Csapat</span>(<span class="keyword">string</span> nev) 
+    { 
+        <span class="keyword">this</span>.Nev = nev; 
+        <span class="keyword">this</span>.versenyzok = <span class="keyword">new</span> <span class="type">List</span>&lt;<span class="type">Versenyzo</span>&gt;();
+    }
+
+    <span class="keyword">public void</span> <span class="method">Hozzaad</span>(<span class="keyword">object</span> obj)
+    {
+        <span class="keyword">if</span> (!(obj <span class="keyword">is</span> <span class="type">Versenyzo</span> v))
+            <span class="keyword">throw new</span> <span class="type">F1Exception</span>(<span class="string">"Nem versenyző!"</span>);
+        
+        versenyzok.<span class="method">Add</span>(v);
+    }
+
+    <span class="keyword">public int</span> <span class="method">PontszamOsszesen</span>() 
+    {
+        <span class="keyword">return</span> versenyzok.<span class="method">Sum</span>(v => v.Pontszam);
+    }
+
+    <span class="keyword">public override string</span> <span class="method">ToString</span>()
+    {
+        <span class="keyword">string</span> vnevek = <span class="keyword">string</span>.Join(<span class="string">", "</span>, versenyzok.Select(v => v.Nev));
+        <span class="keyword">return</span> <span class="string">$"</span>{Nev}<span class="string">: </span>{vnevek}<span class="string">"</span>;
+    }
+}</pre></div>
+
+        <h2>4. Bajnoksag osztály</h2>
+        <div class="code-block"><pre><span class="comment">/*
+ * A Bajnoksag osztály:
+ * 1. csapatok lista.
+ * 3. hozzaad_csapat metódus (Csapat objektumot ad a listához).
+ *    (MÓDOSÍTVA): Hibás típus esetén F1Exception: „Nem csapat!”.
+ * 4. legjobb_csapat metódus (legnagyobb összpontszámú csapat).
+ * 5. statisztika metódus (országonkénti versenyzőszám, kisbetűs országok).
+ */</span>
+<span class="keyword">public class</span> <span class="type">Bajnoksag</span>
+{
+    <span class="keyword">private</span> <span class="type">List</span>&lt;<span class="type">Csapat</span>&gt; csapatok;
+
+    <span class="keyword">public</span> <span class="method">Bajnoksag</span>() 
+    { 
+        csapatok = <span class="keyword">new</span> <span class="type">List</span>&lt;<span class="type">Csapat</span>&gt;(); 
+    }
+
+    <span class="keyword">public void</span> <span class="method">HozzaadCsapat</span>(<span class="keyword">object</span> obj)
+    {
+        <span class="keyword">if</span> (!(obj <span class="keyword">is</span> <span class="type">Csapat</span> cs))
+            <span class="keyword">throw new</span> <span class="type">F1Exception</span>(<span class="string">"Nem csapat!"</span>);
+        csapatok.<span class="method">Add</span>(cs);
+    }
+
+    <span class="keyword">public</span> <span class="type">Csapat</span> <span class="method">LegjobbCsapat</span>()
+    {
+        <span class="keyword">return</span> csapatok
+            .<span class="method">OrderByDescending</span>(cs => cs.<span class="method">PontszamOsszesen</span>())
+            .<span class="method">FirstOrDefault</span>();
+    }
+
+    <span class="keyword">public</span> <span class="type">Dictionary</span>&lt;<span class="keyword">string</span>, <span class="keyword">int</span>&gt; <span class="method">Statisztika</span>()
+    {
+        <span class="keyword">var</span> stat = <span class="keyword">new</span> <span class="type">Dictionary</span>&lt;<span class="keyword">string</span>, <span class="keyword">int</span>&gt;();
+        <span class="keyword">foreach</span> (<span class="keyword">var</span> cs <span class="keyword">in</span> csapatok)
+        {
+            <span class="keyword">foreach</span> (<span class="keyword">var</span> v <span class="keyword">in</span> cs.Versenyzok)
+            {
+                <span class="keyword">string</span> o = v.Orszag.ToLower();
+                <span class="keyword">if</span> (stat.ContainsKey(o)) stat[o]++;
+                <span class="keyword">else</span> stat[o] = <span class="number">1</span>;
+            }
+        }
+        <span class="keyword">return</span> stat;
+    }
+}</pre></div>
 
         <div class="card" style="background-color: #3e3e42; border-left: 4px solid #f1c40f;">
             <strong>💡 Vizsga Tipp: A "mágikus" billentyűkombináció</strong><br>
