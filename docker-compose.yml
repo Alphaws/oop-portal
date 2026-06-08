@@ -9,11 +9,12 @@ services:
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.oop-portal.rule=Host(`oop.localhost`)"
-      - "traefik.http.routers.oop-portal.entrypoints=web"
+      - "traefik.http.routers.oop-portal.rule=Host(`oop.prstart.hu`) || Host(`oop.localhost`)"
+      - "traefik.http.routers.oop-portal.entrypoints=websecure"
+      - "traefik.http.routers.oop-portal.tls.certresolver=myresolver"
     networks:
-      - traefik-net
+      - traefik
 
 networks:
-  traefik-net:
+  traefik:
     external: true
