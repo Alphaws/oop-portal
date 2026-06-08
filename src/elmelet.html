@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elméleti Beugró - OOP Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .question-block {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--primary-color);
+            border-radius: 3px;
+        }
+        .question {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        .answer {
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><strong>OOP</strong> Portal</div>
+        <nav>
+            <a href="index.html">Főoldal</a>
+            <a href="elmelet.html">Elmélet</a>
+            <a href="vizsga.html">Vizsga</a>
+            <a href="orai-munkak.html">Órai munkák</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Elméleti Beugró Kérdések és Válaszok</h1>
+        <p>Programozás 1 - Milton Friedman Egyetem (Csolti Péter)</p>
+
+        <h2>I. Ismétlés: metódusok</h2>
+        <div class="question-block">
+            <div class="question">1) Eljárás vagy függvény? (void, return)</div>
+            <div class="answer">Az eljárás (<code>void</code>) nem ad vissza értéket, csak végrehajt egy feladatot. A függvény (visszatérési típussal rendelkező metódus) a <code>return</code> kulcsszóval értéket ad vissza a hívónak.</div>
+        </div>
+        <div class="question-block">
+            <div class="question">2) Mi határozza meg a függvény típusát? (mi a kapcsolat a return-nel)</div>
+            <div class="answer">A függvény típusát a visszatérési érték típusa határozza meg. A <code>return</code> után álló kifejezés típusának meg kell egyeznie a metódus fejlécében deklarált típussal.</div>
+        </div>
+        <div class="question-block">
+            <div class="question">3) A static metódusok mit érnek el?</div>
+            <div class="answer">Az osztályhoz tartoznak, nem egy konkrét példányhoz. Példányosítás nélkül, az osztály nevével hívhatók (pl. <code>Math.Sqrt()</code>). Csak statikus tagokat érhetnek el közvetlenül.</div>
+        </div>
+        <div class="question-block">
+            <div class="question">4) Formális és aktuális paraméterek közötti különbség?</div>
+            <div class="answer">A formális paraméterek a metódus deklarációjában szereplő változónevek. Az aktuális paraméterek (argumentumok) azok a konkrét értékek, amelyeket a hívás pillanatában átadunk.</div>
+        </div>
+        <div class="question-block">
+            <div class="question">5) Mi tartozik a metódus szignatúrájába?</div>
+            <div class="answer">A metódus neve és a paraméterlistája (paraméterek száma, típusa és sorrendje). A visszatérési érték típusa és a láthatósági módosítók nem részei a szignatúrának.</div>
+        </div>
+        <div class="question-block">
+            <div class="question">6) Mi jellemző a túlterhelésre (overloading)?</div>
+            <div class="answer">Azonos metódusnév, de eltérő paraméterlista (eltérő szignatúra) ugyanazon az osztályon belül.</div>
+        </div>
+        <div class="question-block">
+            <div class="question">7) Mi jellemző a konstruktor függvényre? (egy „hagyományos” függvényhez képest)</div>
+            <div class="answer">Nincs visszatérési típusa (még <code>void</code> sem), neve pontosan megegyezik az osztály nevével, és az objektum példányosításakor (a <code>new</code> operátorral) fut le.</div>
+        </div>
+        <div class="question-block">
+            <div class="question">8) Osztály, objektum, példány, operátor, konstruktor a Random rnd = new Random() sorban</div>
+            <div class="answer">
+                <ul>
+                    <li><code>Random</code>: Osztály (típus).</li>
+                    <li><code>rnd</code>: Referencia változó.</li>
+                    <li><code>new</code>: Példányosító operátor.</li>
+                    <li><code>Random()</code>: Konstruktor hívás.</li>
+                    <li>Az eredmény: egy létrejött <b>objektum</b> vagy <b>példány</b> a memóriában.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>II. OOP paradigma</h2>
+        <div class="question-block">
+            <div class="question">1) Melyek az OOP alapelvei?</div>
+            <div class="answer">Egységbezárás (Encapsulation), Öröklődés (Inheritance), Polimorfizmus (Polymorphism) és Absztrakció (Abstraction).</div>
+        </div>
+        <div class="question-block">
+            <div class="question">2) Override és overload különbségek metódus szintjén, öröklődés során?</div>
+            <div class="answer">Az <b>overload</b> (túlterhelés) azonos osztályon belüli, más paraméterezésű metódusokat jelent. Az <b>override</b> (felülírás) öröklődésnél történik: az utódosztály újraírja az ős metódusát pontosan ugyanazzal a szignatúrával.</div>
+        </div>
+        <div class="question-block">
+            <div class="question">3) Mi jellemző az öröklésre?</div>
+            <div class="answer">Az utódosztály (subclass) megörökli az ősosztály (superclass) látható tulajdonságait és viselkedését, lehetővé téve a kód újrafelhasználását és a hierarchikus felépítést.</div>
+        </div>
+        <div class="question-block">
+            <div class="question">10) Melyek a GIT technológia szolgáltatásai?</div>
+            <div class="answer">Verziókezelés, változások követése, elágazások kezelése (branching), összefésülés (merging), távoli tárolás és közös munka támogatása.</div>
+        </div>
+
+        <h2>III. OOP konstruktor</h2>
+        <div class="question-block">
+            <div class="question">1. Mi a dolga a konstruktornak?</div>
+            <div class="answer">Az objektum példányosításakor a kezdőállapot beállítása (mezők inicializálása) és az esetleges erőforrások lefoglalása.</div>
+        </div>
+        <div class="question-block">
+            <div class="question">7. Mi a dolga egy setternek?</div>
+            <div class="answer">Értéket ad egy privát mezőnek, és lehetőséget biztosít az adat ellenőrzésére (validálására) a beállítás előtt.</div>
+        </div>
+        <div class="question-block">
+            <div class="question">10. Mi a helyes módszer az adatok ellenőrzésére, a kódduplikálás elkerülésével?</div>
+            <div class="answer">A validációs logikát a setterekbe kell tenni, és a konstruktorból is ezeket a settereket kell meghívni közvetlen mező-értékadás helyett.</div>
+        </div>
+
+        <h2>IV. OOP konstruktorhívási lánc, override</h2>
+        <div class="question-block">
+            <div class="question">1. Hogy hívják azt, amikor egy konstruktorból egy másikat hívunk?</div>
+            <div class="answer">Konstruktor láncolás (Constructor Chaining).</div>
+        </div>
+        <div class="question-block">
+            <div class="question">9. Mi a toString szerepe?</div>
+            <div class="answer">Az objektum aktuális állapotát (mezőit) reprezentáló szöveges formátum előállítása, ami leginkább debugolásnál hasznos.</div>
+        </div>
+        <div class="question-block">
+            <div class="question">10. Mi a kapcsolat az equals() és a hashCode() között?</div>
+            <div class="answer">A szerződés szerint: ha két objektum egyenlő (equals), akkor a hash kódjuknak is azonosnak kell lennie. Megfordítva nem feltétlenül igaz (hash ütközés).</div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Milton Friedman Egyetem - Programozás 1</p>
+    </footer>
+</body>
+</html>

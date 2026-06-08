@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vizsgafelkészülés - OOP Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .score {
+            float: right;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+        }
+        .task-description {
+            background-color: #252526;
+            padding: 15px;
+            border-left: 4px solid var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .code-block {
+            background-color: var(--code-bg);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 30px;
+            overflow-x: auto;
+            color: #d4d4d4;
+        }
+        .comment { color: #6a9955; }
+        .keyword { color: #569cd6; }
+        .type { color: #4ec9b0; }
+        .string { color: #ce9178; }
+        .number { color: #b5cea8; }
+        .method { color: #dcdcaa; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><strong>OOP</strong> Portal</div>
+        <nav>
+            <a href="index.html">Főoldal</a>
+            <a href="elmelet.html">Elmélet</a>
+            <a href="vizsga.html">Vizsga</a>
+            <a href="orai-munkak.html">Órai munkák</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Formula–1 bajnokság - HIVATALOS VIZSGA MEGOLDÁS</h1>
+        <p style="background-color: #d35400; color: white; padding: 10px; border-radius: 5px;">
+            <strong>⚠️ VIZSGA KÖVETELMÉNYEK FRISSÍTVE:</strong><br>
+            - <b>NEM KELL:</b> WinForms, Bajnokság ToString.<br>
+            - <b>MÓDOSÍTVA:</b> == operátor helyett <b>Equals + GetHashCode</b>.<br>
+            - <b>MÓDOSÍTVA:</b> TypeError helyett <b>Saját kivétel (F1Exception)</b>.
+        </p>
+
+        <h2>1. F1Exception osztály</h2>
+        <div class="code-block">
+<span class="comment">/* 
+ * A F1Exception osztály: 
+ * - Hozz létre egy F1Exception nevű kivételosztályt, amely az Exception-ből öröklődik!
+ * - Készíts egy egyparaméteres konstruktort, amely egy hibaüzenetet vár!
+ * - Hívd meg az ősosztály konstruktorát a hibaüzenettel!
+ */</span>
+<span class="keyword">public class</span> <span class="type">F1Exception</span> : <span class="type">Exception</span>
+{
+    <span class="keyword">public</span> <span class="method">F1Exception</span>() { }
+    <span class="keyword">public</span> <span class="method">F1Exception</span>(<span class="keyword">string</span> message) : <span class="keyword">base</span>(message) { }
+}</div>
+
+        <h2>2. Versenyzo osztály</h2>
+        <div class="code-block">
+<span class="comment">/*
+ * A Versenyzo osztály:
+ * 1. nev, orszag és pontszam adattagok.
+ * 2. Konstruktor (nev, orszag, pontszam sorrendben).
+ * 3. pontszam alapértelmezett értéke 0.
+ * 7. Setter csak 0 és 500 között, egyébként F1Exception: „Érvénytelen pontszám!”.
+ * 8. ToString felülírás: {nev} ({orszag}) – {pontszam} pont.
+ * 9. (MÓDOSÍTVA): == helyett Equals és GetHashCode felülírása.
+ */</span>
+<span class="keyword">public class</span> <span class="type">Versenyzo</span>
+{
+    <span class="keyword">private string</span> nev;
+    <span class="keyword">private string</span> orszag;
+    <span class="keyword">private int</span> pontszam;
+
+    <span class="keyword">public</span> <span class="method">Versenyzo</span>(<span class="keyword">string</span> nev, <span class="keyword">string</span> orszag, <span class="keyword">int</span> pontszam = <span class="number">0</span>)
+    {
+        <span class="keyword">this</span>.nev = nev;
+        <span class="keyword">this</span>.orszag = orszag;
+        <span class="keyword">this</span>.Pontszam = pontszam;
+    }
+
+    <span class="keyword">public string</span> Nev { <span class="keyword">get</span> => nev; <span class="keyword">set</span> => nev = <span class="keyword">value</span>; }
+    <span class="keyword">public string</span> Orszag { <span class="keyword">get</span> => orszag; <span class="keyword">set</span> => orszag = <span class="keyword">value</span>; }
+    <span class="keyword">public int</span> Pontszam
+    {
+        <span class="keyword">get</span> => pontszam;
+        <span class="keyword">set</span>
+        {
+            <span class="keyword">if</span> (<span class="keyword">value</span> < <span class="number">0</span> || <span class="keyword">value</span> > <span class="number">500</span>)
+                <span class="keyword">throw new</span> <span class="type">F1Exception</span>(<span class="string">"Érvénytelen pontszám!"</span>);
+            pontszam = <span class="keyword">value</span>;
+        }
+    }
+
+    <span class="keyword">public override string</span> <span class="method">ToString</span>() => <span class="string">$"</span>{nev}<span class="string"> (</span>{orszag}<span class="string">) - </span>{pontszam}<span class="string"> pont"</span>;
+
+    <span class="keyword">public override bool</span> <span class="method">Equals</span>(<span class="keyword">object</span> obj)
+    {
+        <span class="keyword">if</span> (obj <span class="keyword">is</span> <span class="type">Versenyzo</span> masik)
+        {
+            <span class="keyword">return</span> <span class="keyword">this</span>.nev.ToLower() == masik.nev.ToLower() && 
+                   <span class="keyword">this</span>.orszag.ToLower() == masik.orszag.ToLower();
+        }
+        <span class="keyword">return false</span>;
+    }
+
+    <span class="keyword">public override int</span> <span class="method">GetHashCode</span>() => (nev.ToLower(), orszag.ToLower()).GetHashCode();
+}</div>
+
+        <div class="card" style="background-color: #3e3e42; border-left: 4px solid #f1c40f;">
+            <strong>💡 Vizsga Tipp: A "mágikus" billentyűkombináció</strong><br>
+            A Visual Studio-ban és Riderben a <strong>CTRL + .</strong> (vagy ALT + Enter) a legjobb barátod:
+            <ul>
+                <li><strong>Generálás:</strong> Ha beírod az osztály nevét, a gombbal automatikusan legenerálhatod a konstruktorokat.</li>
+                <li><strong>Using-ok:</strong> Ha pirossal aláhúz egy típust (pl. List, Dictionary), ezzel tudod automatikusan importálni a hiányzó <code>using</code> sorokat.</li>
+                <li><strong>Interface/Override:</strong> Segít legenerálni a metódusok vázát (pl. ToString felülírásánál).</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Milton Friedman Egyetem - Programozás 1</p>
+    </footer>
+</body>
+</html>

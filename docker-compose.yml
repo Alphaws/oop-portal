@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: oop-portal
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.oop-portal.rule=Host(`oop.localhost`)"
+      - "traefik.http.routers.oop-portal.entrypoints=web"
+    networks:
+      - traefik-net
+
+networks:
+  traefik-net:
+    external: true
