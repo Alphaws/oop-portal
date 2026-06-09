@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C# & OOP Alapok - OOP Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">OOP<span>Portal</span></div>
+        <nav>
+            <a href="index.html">Főoldal</a>
+            <a href="tutorial-oop-cs.html" class="active">Kurzusok</a>
+            <a href="elmelet.html">Archívum</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" style="padding: 4rem 1rem;">
+            <h1>C# & OOP Alapok</h1>
+            <p>Üdvözöllek a kurzuson! Itt megtanulhatod a modern szoftverfejlesztés alapköveit. Haladjunk lépésről lépésre.</p>
+        </section>
+
+        <!-- Step 1 -->
+        <div class="card glass" style="margin-bottom: 3rem;">
+            <div class="badge badge-active">1. Lépés</div>
+            <h3>Mi az az OOP?</h3>
+            <p>Az Objektumorientált Programozás (OOP) egy szemléletmód, ahol a programot egymással kommunikáló <strong>objektumok</strong> halmazaként fogjuk fel. Gondolj egy objektumra úgy, mint egy valós világban létező dologra: egy autó, egy felhasználó, vagy akár egy bankszámla.</p>
+            <p>Minden objektumnak vannak:</p>
+            <ul style="margin-left: 2rem; margin-bottom: 1rem; color: var(--text-dim);">
+                <li><strong>Tulajdonságai (Adatai):</strong> pl. az autó színe, a felhasználó neve.</li>
+                <li><strong>Képességei (Metódusai):</strong> pl. az autó elindul, a felhasználó bejelentkezik.</li>
+            </ul>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="card glass" style="margin-bottom: 3rem;">
+            <div class="badge badge-active">2. Lépés</div>
+            <h3>Osztály vs. Objektum</h3>
+            <p>Az <strong>Osztály</strong> a tervrajz, az <strong>Objektum</strong> pedig a tervrajz alapján elkészült konkrét dolog.</p>
+            <p>Nézzünk egy egyszerű C# példát egy kutya osztályra:</p>
+            
+            <pre><button class="copy-btn">Másolás</button><code>public class Kutya 
+{
+    // Tulajdonságok
+    public string Nev;
+    public int Kor;
+
+    // Metódus (Képesség)
+    public void Ugat() 
+    {
+        Console.WriteLine(Nev + " mondja: Vau-vau!");
+    }
+}</code></pre>
+
+            <p>És így hozzuk létre belőle az objektumot:</p>
+
+            <pre><button class="copy-btn">Másolás</button><code>Kutya fido = new Kutya();
+fido.Nev = "Fidó";
+fido.Kor = 3;
+fido.Ugat(); // Kimenet: Fidó mondja: Vau-vau!</code></pre>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="card glass" style="margin-bottom: 3rem;">
+            <div class="badge badge-active">3. Lépés</div>
+            <h3>Próbáld ki!</h3>
+            <p>A fenti kódban a <code>new</code> kulcsszóval hoztunk létre egy új példányt (objektumot) az osztályból. Próbáld meg elképzelni, hogyan nézne ki egy <code>Auto</code> osztály!</p>
+            <div style="background: rgba(0, 122, 255, 0.1); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--accent-blue);">
+                <strong>Feladat:</strong> Tervezz meg fejben egy Autó osztályt 3 tulajdonsággal és 1 metódussal!
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="#" class="btn-primary" style="opacity: 0.5; cursor: not-allowed;">Következő fejezet (Hamarosan)</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Milton Friedman Egyetem - Programozás Oktatási Portál</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

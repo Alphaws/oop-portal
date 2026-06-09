@@ -4,60 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Órai Munkák - OOP Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <div class="logo"><strong>OOP</strong> Portal</div>
+        <div class="logo">OOP<span>Portal</span></div>
         <nav>
             <a href="index.html">Főoldal</a>
-            <a href="elmelet.html">Elmélet</a>
-            <a href="vizsga.html">Vizsga</a>
-            <a href="orai-munkak.html">Órai munkák</a>
+            <a href="tutorial-oop-cs.html">Kurzusok</a>
+            <a href="elmelet.html" class="active">Archívum</a>
         </nav>
     </header>
 
     <main>
-        <h1>Féléves Órai Munkák Részletes Összefoglalója</h1>
-        <p>Az alábbiakban megtalálod az egyes alkalmak során érintett témaköröket és az elkészített gyakorló feladatokat.</p>
+        <div class="glass" style="padding: 2rem; margin-bottom: 3rem;">
+            <h1>Órai Munkák Összefoglalója</h1>
+            <p>Féléves gyakorló feladatok és órai anyagok gyűjteménye.</p>
+        </div>
         
-        <section class="card">
-            <h2>1. alkalom: Alapok és Metódusok</h2>
-            <p>A kurzus elején a procedurális alapokat és a metódusok professzionális használatát vettük át.</p>
-            <a href="ora-1.html" class="btn">Részletek és példakódok</a>
-        </section>
+        <div class="grid">
+            <section class="card glass">
+                <div class="badge badge-active">1. Alkalom</div>
+                <h3>Alapok és Metódusok</h3>
+                <p>A kurzus elején a procedurális alapokat és a metódusok professzionális használatát vettük át.</p>
+                <a href="ora-1.html" class="btn-primary" style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">Részletek</a>
+            </section>
 
-        <section class="card">
-            <h2>2. alkalom: Az OOP Alappillérei</h2>
-            <p>Ebben a blokkban léptünk át az objektumorientált programozás világába.</p>
-            <a href="ora-2.html" class="btn">Részletek és példakódok</a>
-        </section>
+            <section class="card glass">
+                <div class="badge badge-active">2. Alkalom</div>
+                <h3>Az OOP Alappillérei</h3>
+                <p>Ebben a blokkban léptünk át az objektumorientált programozás világába.</p>
+                <a href="ora-2.html" class="btn-primary" style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">Részletek</a>
+            </section>
 
-        <section class="card">
-            <h2>3. alkalom: Komplex Adatmodellezés</h2>
-            <p>Az objektumok közötti interakciók és az összetettebb logikai felépítés volt a fókuszban.</p>
-            <a href="ora-3.html" class="btn">Részletek és példakódok</a>
-        </section>
+            <section class="card glass">
+                <div class="badge badge-active">3. Alkalom</div>
+                <h3>Komplex Adatmodellezés</h3>
+                <p>Az objektumok közötti interakciók és az összetettebb logikai felépítés volt a fókuszban.</p>
+                <a href="ora-3.html" class="btn-primary" style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">Részletek</a>
+            </section>
 
-        <section class="card">
-            <h2>4. alkalom: Generikus Gyűjtemények és LINQ</h2>
-            <p>A modern C# fejlesztés elengedhetetlen eszközeit sajátítottuk el.</p>
-            <a href="ora-4.html" class="btn">Részletek és példakódok</a>
-        </section>
+            <section class="card glass">
+                <div class="badge badge-active">4. Alkalom</div>
+                <h3>Generikus Gyűjtemények</h3>
+                <p>A modern C# fejlesztés elengedhetetlen eszközeit sajátítottuk el (Listák, LINQ).</p>
+                <a href="ora-4.html" class="btn-primary" style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">Részletek</a>
+            </section>
 
-        <section class="card">
-            <h2>ListaApp1 & Összefoglaló Projekt</h2>
-            <p>Egy átfogó alkalmazás, amely a félév során tanult összes technológiát egyesíti.</p>
-            <ul>
-                <li>Saját osztályok tárolása listákban és halmazokban.</li>
-                <li>Összetett keresési és rendezési feladatok megvalósítása.</li>
-                <li>Konzolos menürendszer és felhasználói bemenetek validálása.</li>
-            </ul>
-        </section>
+            <section class="card glass">
+                <div class="badge badge-active">Projekt</div>
+                <h3>Összefoglaló Feladat</h3>
+                <p>Egy átfogó alkalmazás (ListaApp1), amely a félév összes technológiáját egyesíti.</p>
+                <ul style="margin-left: 1.5rem; color: var(--text-dim); font-size: 0.9rem;">
+                    <li>Saját osztályok tárolása listákban.</li>
+                    <li>Keresési és rendezési feladatok.</li>
+                    <li>Bemeneti validáció.</li>
+                </ul>
+            </section>
+        </div>
     </main>
 
     <footer>
-        <p>&copy; 2026 Milton Friedman Egyetem - Programozás 1</p>
+        <p>&copy; 2026 Milton Friedman Egyetem - Programozás Oktatási Portál</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

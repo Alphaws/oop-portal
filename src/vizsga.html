@@ -4,36 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vizsgafelkészülés - OOP Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
         .score {
             float: right;
-            background-color: var(--accent-color);
+            background-color: var(--accent-blue);
             color: white;
             padding: 2px 8px;
             border-radius: 4px;
             font-size: 0.8em;
         }
         .task-description {
-            background-color: #252526;
+            background-color: rgba(255, 255, 255, 0.05);
             padding: 15px;
-            border-left: 4px solid var(--primary-color);
+            border-left: 4px solid var(--accent-blue);
             margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
         }
         .code-block {
-            background-color: var(--code-bg);
+            background-color: rgba(0, 0, 0, 0.4);
             padding: 20px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
             margin-bottom: 30px;
             overflow-x: auto;
             color: #d4d4d4;
             white-space: pre-wrap;
             word-wrap: break-word;
+            position: relative;
         }
         pre {
             margin: 0;
             white-space: pre;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
         }
         .comment { color: #6a9955; }
         .keyword { color: #569cd6; }
@@ -41,34 +48,47 @@
         .string { color: #ce9178; }
         .number { color: #b5cea8; }
         .method { color: #dcdcaa; }
+
+        .warning-box {
+            background: linear-gradient(135deg, #d35400, #e67e22);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 20px rgba(211, 84, 0, 0.2);
+        }
     </style>
 </head>
 <body>
     <header>
-        <div class="logo"><strong>OOP</strong> Portal</div>
+        <div class="logo">OOP<span>Portal</span></div>
         <nav>
             <a href="index.html">Főoldal</a>
-            <a href="elmelet.html">Elmélet</a>
-            <a href="vizsga.html">Vizsga</a>
-            <a href="orai-munkak.html">Órai munkák</a>
+            <a href="tutorial-oop-cs.html">Kurzusok</a>
+            <a href="elmelet.html" class="active">Archívum</a>
         </nav>
     </header>
 
     <main>
-        <h1>Formula–1 bajnokság - HIVATALOS VIZSGA MEGOLDÁS</h1>
+        <div class="glass" style="padding: 2rem; margin-bottom: 3rem;">
+            <h1>Formula–1 bajnokság</h1>
+            <p>Hivatalos vizsga megoldás és felkészítő anyag</p>
+        </div>
         
-        <section class="card">
+        <section class="glass card" style="margin-bottom: 3rem;">
             <h2>Eredeti Feladatleírás (PDF)</h2>
-            <p>Itt olvashatod az eredeti vizsgafeladat leírását. Ha nem jelenik meg, <a href="Formula.pdf" target="_blank" style="color: var(--primary-color);">kattints ide a letöltéshez</a>.</p>
-            <iframe src="Formula.pdf" width="100%" height="500px" style="border: 1px solid var(--border-color); border-radius: 6px;"></iframe>
+            <p style="margin-bottom: 1.5rem;">Itt olvashatod az eredeti vizsgafeladat leírását. Ha nem jelenik meg, <a href="Formula.pdf" target="_blank" style="color: var(--accent-blue); text-decoration: none; font-weight: 600;">kattints ide a letöltéshez</a>.</p>
+            <iframe src="Formula.pdf" width="100%" height="500px" style="border: 1px solid var(--glass-border); border-radius: 12px; background: white;"></iframe>
         </section>
 
-        <p style="background-color: #d35400; color: white; padding: 15px; border-radius: 5px; margin-bottom: 30px;">
-            <strong>⚠️ VIZSGA KÖVETELMÉNYEK (FRISSÍTVE):</strong><br>
-            - <b>NEM KELL:</b> WinForms felület és Bajnokság ToString.<br>
-            - <b>MÓDOSÍTVA:</b> == operátor helyett <b>Equals + GetHashCode</b>.<br>
-            - <b>MÓDOSÍTVA:</b> TypeError helyett <b>Saját kivétel (F1Exception)</b> mindenhol.
-        </p>
+        <div class="warning-box">
+            <strong style="font-size: 1.2rem; display: block; margin-bottom: 0.5rem;">⚠️ VIZSGA KÖVETELMÉNYEK (FRISSÍTVE):</strong>
+            <ul style="list-style: none;">
+                <li>• <b>NEM KELL:</b> WinForms felület és Bajnokság ToString.</li>
+                <li>• <b>MÓDOSÍTVA:</b> == operátor helyett <b>Equals + GetHashCode</b>.</li>
+                <li>• <b>MÓDOSÍTVA:</b> TypeError helyett <b>Saját kivétel (F1Exception)</b> mindenhol.</li>
+            </ul>
+        </div>
 
         <h2>1. F1Exception osztály</h2>
         <div class="code-block"><pre><span class="comment">/* 
@@ -234,10 +254,10 @@
     }
 }</pre></div>
 
-        <div class="card" style="background-color: #3e3e42; border-left: 4px solid #f1c40f;">
-            <strong>💡 Vizsga Tipp: A "mágikus" billentyűkombináció</strong><br>
-            A Visual Studio-ban és Riderben a <strong>CTRL + .</strong> (vagy ALT + Enter) a legjobb barátod:
-            <ul>
+        <div class="glass" style="padding: 2rem; border-left: 4px solid #f1c40f; margin-top: 4rem;">
+            <strong style="color: #f1c40f; font-size: 1.2rem; display: block; margin-bottom: 1rem;">💡 Vizsga Tipp: A "mágikus" billentyűkombináció</strong>
+            <p>A Visual Studio-ban és Riderben a <strong>CTRL + .</strong> (vagy ALT + Enter) a legjobb barátod:</p>
+            <ul style="margin-left: 1.5rem; margin-top: 1rem; color: var(--text-dim);">
                 <li><strong>Generálás:</strong> Ha beírod az osztály nevét, a gombbal automatikusan legenerálhatod a konstruktorokat.</li>
                 <li><strong>Using-ok:</strong> Ha pirossal aláhúz egy típust (pl. List, Dictionary), ezzel tudod automatikusan importálni a hiányzó <code>using</code> sorokat.</li>
                 <li><strong>Interface/Override:</strong> Segít legenerálni a metódusok vázát (pl. ToString felülírásánál).</li>
@@ -246,7 +266,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 Milton Friedman Egyetem - Programozás 1</p>
+        <p>&copy; 2026 Milton Friedman Egyetem - Programozás Oktatási Portál</p>
     </footer>
 </body>
 </html>

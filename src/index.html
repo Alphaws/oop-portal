@@ -3,39 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OOP Study Portal</title>
+    <title>OOP Mesterkurzus - prstart.hu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <div class="logo"><strong>OOP</strong> Portal</div>
+        <div class="logo">OOP<span>Portal</span></div>
         <nav>
-            <a href="index.html">Főoldal</a>
-            <a href="elmelet.html">Elmélet</a>
-            <a href="vizsga.html">Vizsga</a>
-            <a href="orai-munkak.html">Órai munkák</a>
+            <a href="index.html" class="active">Főoldal</a>
+            <a href="tutorial-oop-cs.html">Kurzusok</a>
+            <a href="elmelet.html">Archívum</a>
         </nav>
     </header>
 
     <main>
-        <section class="card">
-            <h1>Üdvözöllek az OOP Tanulmányi Portálon!</h1>
-            <p>Ez az oldal a Milton Friedman Egyetem Programozás 1 kurzusához kapcsolódó anyagokat gyűjti össze. Itt megtalálod az elméleti beugró kérdéseket, a vizsgafeladatok kidolgozását és az órai munkák összefoglalóit.</p>
-            <a href="elmelet.html" class="btn">Kezdjük az elmélettel!</a>
+        <section class="hero">
+            <h1>Válj Mesterré a Fejlesztésben</h1>
+            <p>Gyakorlatias oktatóanyagok a modern szoftverfejlesztéshez. Sajátítsd el az objektumorientált szemléletet és a legmodernebb technológiákat lépésről lépésre.</p>
+            <a href="tutorial-oop-cs.html" class="btn-primary">Kezdd el a C# & OOP alapjaival</a>
         </section>
 
-        <section class="card">
-            <h2>Hírek & Frissítések</h2>
-            <ul>
-                <li><strong>2026.06.08:</strong> Elméleti beugró kérdések (45 db) feltöltve.</li>
-                <li><strong>2026.06.08:</strong> Formula-1 vizsgafeladat megoldás publikálva.</li>
-                <li><strong>2026.06.08:</strong> Projekt elindítva a marcika szerveren.</li>
-            </ul>
+        <section id="roadmap">
+            <h2 style="text-align: center; margin-bottom: 1rem; font-size: 2rem;">Roadmap</h2>
+            <p style="text-align: center; color: var(--text-dim); margin-bottom: 3rem;">A teljes tanulási útvonal, amit együtt járunk be.</p>
+            
+            <div class="grid">
+                <!-- C# & OOP -->
+                <div class="card glass">
+                    <span class="badge badge-active">Elérhető</span>
+                    <h3>C# & OOP Alapok</h3>
+                    <p>Az alapoktól indulva nézzük meg, hogyan épülnek fel az osztályok, mik azok az objektumok, és hogyan használjuk az öröklődést és polimorfizmust.</p>
+                    <a href="tutorial-oop-cs.html" class="btn-primary" style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">Tanulás indítása</a>
+                </div>
+
+                <!-- Git -->
+                <div class="card glass">
+                    <span class="badge badge-soon">Hamarosan</span>
+                    <h3>Git & Verziókezelés</h3>
+                    <p>Tanuljuk meg profi módon kezelni a forráskódot. Branch-elés, merge-elés, és a GitHub hatékony használata a csapatmunkában.</p>
+                </div>
+
+                <!-- Docker -->
+                <div class="card glass">
+                    <span class="badge badge-soon">Hamarosan</span>
+                    <h3>Docker & Konténerizáció</h3>
+                    <p>Hogyan csomagoljuk be az alkalmazásunkat, hogy bárhol ugyanúgy fusson. Dockerfile-ok, compose fájlok és a dev környezet modernizálása.</p>
+                </div>
+
+                <!-- GUI -->
+                <div class="card glass">
+                    <span class="badge badge-soon">Hamarosan</span>
+                    <h3>Modern GUI Fejlesztés</h3>
+                    <p>Építsünk látványos asztali alkalmazásokat C# és .NET segítségével. Felhasználói élmény (UX) és modern dizájn alapelvek a gyakorlatban.</p>
+                </div>
+
+                <!-- Web -->
+                <div class="card glass">
+                    <span class="badge badge-soon">Hamarosan</span>
+                    <h3>Webes Technológiák</h3>
+                    <p>Backend és Frontend alapok. API fejlesztés és a modern webes keretrendszerek világa.</p>
+                </div>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Milton Friedman Egyetem - Programozás 1</p>
+        <p>&copy; 2026 Milton Friedman Egyetem - Programozás Oktatási Portál</p>
+        <p style="font-size: 0.8rem; margin-top: 1rem; color: var(--text-dim);">Készítette: prstart.hu csapata</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
